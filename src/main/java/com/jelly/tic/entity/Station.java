@@ -1,18 +1,12 @@
 package com.jelly.tic.entity;
 
-public class Station {
-
-    private Long id;
+public class Station extends AbstractEntity{
 
     private String start;
     private String reach;
     private int price;
     private String start_time;
     private String reach_time;
-
-    public Long getId() {return id;}
-
-    public void setId(Long id) {this.id = id;}
 
     public String getStart() {return start;}
 

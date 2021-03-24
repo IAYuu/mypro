@@ -1,4 +1,4 @@
-package com.jelly.tic.web;
+package com.jelly.tic.extension;
 
 import com.jelly.tic.entity.User;
 

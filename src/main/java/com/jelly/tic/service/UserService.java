@@ -1,39 +1,40 @@
 package com.jelly.tic.service;
 
 import com.jelly.tic.entity.User;
+import com.jelly.tic.mapper.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
+@Transactional
 public class UserService {
 
     final Logger logger = LoggerFactory.getLogger(getClass());
 
-//    public User findByUsername(User user);
-//
-//    public User findUserById(String userId);
-
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private UserMapper userMapper;
 
-    RowMapper<User> userRowMapper = new BeanPropertyRowMapper<>(User.class);
+    public User getUserById(Long id) {
+        return userMapper.getById(id);
+    }
+
+    public User getUserByName(String username) {
+        return userMapper.getByName(username);
+    }
 
     // TODO: 2021/3/13  判断是否已经注册
-    public boolean register(User user) {
-        // 注册成功
-        if (1 == jdbcTemplate.update("INSERT into local_auth(name, password) values (?, ?)",
-                user.getName(), user.getPassword()))
-            return true;
-        return false;
+    public void register(User user) {
+        userMapper.insert(user);
+    }
+
+    public void updatePassword(String password) {
+        userMapper.updatePassword(password);
     }
 
     public void signIn(User user) {
-        jdbcTemplate.update("");
 
     }
 

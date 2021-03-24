@@ -1,22 +1,32 @@
 package com.jelly.tic.entity;
 
-public class User {
-    private Long id;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-    private String name;
+import java.io.Serializable;
+
+public class User extends AbstractEntity implements Serializable {
+    static final long serialVersionUID = 1L;
+
+    private String username;
     private String password;
-//    private String sex;
-//    private int age;
 
-    public void setName(String name) {this.name = name;}
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    public String getName() {return name;}
+    public void setName(String username) {this.username = username;}
 
-    public void setPassword(String password) {this.password = password;}
+    public String getName() {return username;}
+
+    public void setPassword(String password) {this.password = passwordEncoder.encode(password.trim());}
+
+//    public void setPassword(String password) {this.password = password;}
 
     public String getPassword() {return password;}
 
-    public User authenticateUserByPassword(String name, String password) {
+    public User getUser() {return this;}
+
+    public User authenticateUserByPassword(String username, String password) {
         return null;
     }
 }

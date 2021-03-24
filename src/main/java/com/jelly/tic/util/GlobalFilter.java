@@ -1,8 +1,8 @@
 package com.jelly.tic.util;
 
 import com.jelly.tic.entity.User;
-import com.jelly.tic.web.Authenticator;
-import com.jelly.tic.web.UserContext;
+import com.jelly.tic.extension.Authenticator;
+import com.jelly.tic.extension.UserContext;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

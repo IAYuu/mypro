@@ -1,37 +1,27 @@
 package com.jelly.tic.service;
 
 import com.jelly.tic.entity.Station;
+import com.jelly.tic.mapper.StationMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Component
+@Transactional
 public class StationService {
 
     final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
-
-    // 将ResultSet转换为Javabean
-    RowMapper<Station> stationRowMapper = new BeanPropertyRowMapper<>(Station.class);
-
-    public Station getStationById(long id) {
-        return jdbcTemplate.queryForObject("SELECT * FROM stations WHERE id = ?", new Object[]{id}, stationRowMapper);
-    }
-
+    StationMapper stationMapper;
 
     public List<Station> getStationByStartAndReach(String start, String reach) {
         try {
-            List<Station> stations = jdbcTemplate.query("SELECT * FROM stations WHERE start = ? AND reach = ?"
-                    , new Object[]{start, reach}
-                    , stationRowMapper);
+            List<Station> stations = stationMapper.getByStartAndReach(start, reach);
             return stations;
         } catch (Exception e) {
             e.printStackTrace();

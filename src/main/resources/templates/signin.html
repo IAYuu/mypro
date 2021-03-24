@@ -1,0 +1,21 @@
+{% extends "_base.html" %}
+
+{% block main %}
+<form method="post">
+<!--     默认配置中，Spring Security 提供拦截请求并验证用户的过滤器，如果验证失败，重定向到"/signin?erro"-->
+<!--     如果用户选择注销，请求发送到"/signin?signout"-->
+    <h3>Sign In</h3>
+    <div class="form-group">
+        <label>username: </label>
+        <input type="text" name="username" class="form-control" placeholder="username" value="{{ username }}">
+    </div>
+    <div class="form-group">
+        <label>password: </label>
+        <input type="password" name="password" class="form-control" placeholder="password" value="{{ password }}">
+    </div>
+    <div class="form-group">
+        <label><input type = "checkbox" name="remember-me"/>自动登录</label>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}
