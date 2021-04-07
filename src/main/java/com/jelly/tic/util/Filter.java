@@ -7,5 +7,5 @@ import javax.servlet.ServletResponse;
 import java.io.IOException;
 
 public interface Filter {
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException;
+    void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException;
 }

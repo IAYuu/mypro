@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+
+{% block main %}
+
+<form method="post" accept-charset="UTF-8" onsubmit="document.charset='UTF-8'">
+    <h3>Query</h3>
+    {% if error != null %}
+    <div class="form-group">
+        <p id="error" class="text-danger">{{ error }}</p>
+    </div>
+    {% endif %}
+    <div class="form-group">
+        <label>start</label>
+        <input name="start" type="text" class="form-control" placeholder="start" value="{{ start }}">
+    </div>
+    <div class="form-group">
+        <label>reach</label>
+        <input name="reach" type="text" class="form-control" placeholder="reach" value="{{ reach }}">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+    </div>
+</form>
+
+{% endblock %}

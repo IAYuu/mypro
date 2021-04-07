@@ -33,6 +33,7 @@ public class UserController {
     @RequestMapping("/signin")
     public String showLogin() {
         logger.info("-----showLogin----");
+//        return "signin.html";
         return "signin.html";
     }
 

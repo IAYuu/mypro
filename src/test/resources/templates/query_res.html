@@ -1,0 +1,17 @@
+{% extends "_base.html" %}
+
+{% block main %}
+
+<h3>Profile</h3>
+{% if stations is not empty %}
+{% for station in stations %}
+<p>start: {{ station.start }}</p>
+<p>reach: {{ station.reach }}</p>
+<br>
+{% endfor %}
+
+{% else %}
+<p>stations is empty</p>
+{% endif %}
+
+{% endblock %}

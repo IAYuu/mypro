@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% block main %}
+
+{% if station == null %}
+<h3>Welcome!</h3>
+<p><a href="/query">Query</a></p>
+<a href="/admin">检测ROLE_ADMIN的角色</a>
+<a href="/user">检测ROLE_USER的角色</a>
+{% else %}
+<h3>what you want to query is {{ station.start }}, {{station.reach}}</h3>
+{% endif %}
+
+{% endblock %}

@@ -1,7 +1,7 @@
 package com.jelly.tic.entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.Serializable;
 
@@ -12,13 +12,15 @@ public class User extends AbstractEntity implements Serializable {
     private String password;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder passwordEncoder;
 
     public void setName(String username) {this.username = username;}
 
     public String getName() {return username;}
 
-    public void setPassword(String password) {this.password = passwordEncoder.encode(password.trim());}
+    public void setPassword(String password) {
+        passwordEncoder = new BCryptPasswordEncoder();
+        this.password = passwordEncoder.encode(password.trim());}
 
 //    public void setPassword(String password) {this.password = password;}
 

@@ -44,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return tokenRepository;
     }
 
+
     // 在内存中配置用户
     @Override
     // 暴露AuthenticationManager建造器
